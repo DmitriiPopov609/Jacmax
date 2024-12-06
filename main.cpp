@@ -11,10 +11,10 @@
 
 int main(int argc, char *argv[])
 {
-	if(argc!=4)
+	if(argc!=5)
 	{
 		printf("Wrong input!\n");
-		printf("Usage: prog InputMode (1 for file from matrix, 2 for creating random matrix) file name/size of matrix  size of minor you want to see\n");
+		printf("Usage: prog InputMode (1 for file from matrix, 2 for creating random matrix) file name/size of matrix  size of minor you want to see  precision of the programm\n");
 		return -1;
 	}
 	else
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	int iter;
 	int rezult;
 	int inputMode;
-	double eps = 1e-10;
+	double eps;
 	double inv1;
 	double inv2;
 	double* a = NULL;
@@ -97,6 +97,13 @@ int main(int argc, char *argv[])
 		if(m>n)
 			m=n;
 
+	}
+
+	eps=std::stod(argv[4]);
+	if(eps<=0)
+	{
+			printf("eps must be >0\n");
+			return -2;
 	}
 
 	a = (double*)malloc(n * n * sizeof(double));
