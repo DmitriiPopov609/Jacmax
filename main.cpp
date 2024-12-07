@@ -72,6 +72,25 @@ int main(int argc, char *argv[])
 
 		break;
 
+	case 3:
+		n=std::stoi(argv[2]);
+
+
+		break;
+
+	case 4:
+		n=std::stoi(argv[2]);
+
+
+		break;
+	
+	case 5:
+		n=std::stoi(argv[2]);
+
+
+		break;
+	
+
 	default:
 		printf("Incorrect mode!\n");
 		return -3;

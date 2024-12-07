@@ -3,11 +3,35 @@
 
 #include "matrix.hpp"
 
-static double f(int i, int j)
+double f(int n,int k,int i, int j)
 {
-	return 1.0 / (i + j + 1.0);
+    switch(k){
+        case 2:
+            return n-1 - fmax(i,j)+1;
+        case 3:
+            if (i==j){
+                return 2;
+            } else if(abs(i-j)==1){
+                return -1;
+            } else {
+                return 0;
+            }
+        case 4:
+            if (i==j && i<n-1 && j<n-1){
+                return 1;
+            } else if(j==n-1){
+                return i;
+            } else if(i==n-1){
+                return j;
+            } else{
+                return 0;
+            }
+        case 5:
+            return 1.0/(i+j+1);
+        default:
+            return -3;
+    }
 }
-
 int InputMatrix(int n, double* a, int inputMode, FILE* fin)
 {
 	int i;
@@ -26,7 +50,7 @@ int InputMatrix(int n, double* a, int inputMode, FILE* fin)
 	{
 		for (i = 0; i < n; ++i)
 			for (j = 0; j < n; ++j)
-				a[i * n + j] = f(i, j);
+				a[i * n + j] = f(n, inputMode, i, j);
 	}
 
 	return 0;
